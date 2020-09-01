@@ -1,4 +1,5 @@
-# vue-demo
+# vue+elementUI脚手架
+已经封装了axios，开箱即用
 
 ## Project setup
 ```
