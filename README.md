@@ -1,4 +1,4 @@
-# vue+elementUI脚手架
+# vue+elementUI脚手架多页面版本
 已经封装了axios，开箱即用
 
 ## Project setup

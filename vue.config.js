@@ -7,8 +7,8 @@ const {
   PORT
 } = process.env
 
-let proxyTarget = require('./_proxy-target')
-console.log('正在使用' + proxyTarget + '代理')
+let proxyTarget = 'http://localhost:8000'
+// console.log('正在使用' + proxyTarget + '代理')
 
 // 文件位置设置别名
 function resolve (dir) {
@@ -32,7 +32,7 @@ module.exports = {
   productionSourceMap: false,
 
   configureWebpack: {
-    optimization: { // 模块信息清单在每次有模块变更(hash 变更)时都会变更, 所以这部分代码单独打包出来
+    optimization: {
       runtimeChunk: {
         name: 'runtime'
       }
@@ -49,16 +49,17 @@ module.exports = {
     }
   },
 
-  chainWebpack: config => {
-    // 删除prefetch preload插件去除打包后文件预加载
-    config.plugins.delete('prefetch')
-    config.plugins.delete('preload')
-  },
+  // chainWebpack: config => {
+  //   // 删除prefetch preload插件去除打包后文件预加载
+  //   config.plugins.delete('prefetch')
+  //   config.plugins.delete('preload')
+  // },
 
   //  lint 错误在开发时直接显示在浏览器中
   lintOnSave: 'error', // default false
 
   devServer: {
+    // index: 'admin.html',
     port: PORT,
     proxy: { // 设置代理，用来解决本地开发跨域问题，如果设置了代理，那你本地开发环境的axios的baseUrl要写为 '' ，即空字符串
       '/api': {
@@ -66,5 +67,20 @@ module.exports = {
         changeOrigin: true // 跨域
       }
     }
+  },
+  pages: {
+    admin: {
+      entry: 'src/entry/admin/index.js',
+      filename: 'admin.html',
+      title: 'Index Page',
+      chunks: ['chunk-vendors', 'chunk-common', 'runtime', 'admin']
+    },
+    blog: {
+      entry: 'src/entry/blog/index.js',
+      filename: 'blog.html',
+      title: 'Index Page',
+      chunks: ['chunk-vendors', 'chunk-common', 'runtime', 'blog']
+    }
+
   }
 }

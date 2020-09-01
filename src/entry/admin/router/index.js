@@ -1,29 +1,29 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '@/store/index'
+// import store from '@/store'
 import routeMaps from './config'
 
 Vue.use(VueRouter)
 
 // 全局路由钩子函数,判断路由是否需要登录是否需要token
-VueRouter.beforeEach((to, from, next) => {
-  let auth = to.meta.auth
-  let token = store.getters['login/token']
-  if (auth) {
-    if (token) {
-      next()
-    } else {
-      next({
-        path: '/login',
-        query: {
-          redirect: to.fullPath
-        }
-      })
-    }
-  } else {
-    next()
-  }
-})
+// VueRouter.beforeEach((to, from, next) => {
+//   let auth = to.meta.auth
+//   let token = store.getters['login/token']
+//   if (auth) {
+//     if (token) {
+//       next()
+//     } else {
+//       next({
+//         path: '/login',
+//         query: {
+//           redirect: to.fullPath
+//         }
+//       })
+//     }
+//   } else {
+//     next()
+//   }
+// })
 
 // 公共路由配置
 let Common = [{

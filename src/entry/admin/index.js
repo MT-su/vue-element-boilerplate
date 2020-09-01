@@ -1,13 +1,15 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './index.vue'
 import router from './router'
-import store from './store'
+import store from '@/store'
 
-import './assets/less/init.less'
-import './assets/less/mixin.less'
-import './plugins/element.js'
+import '@/assets/less/init.less'
+import '@/assets/less/mixin.less'
+import '@/plugins/element.js'
 
 Vue.config.productionTip = false
+
+console.log('admin')
 
 Vue.directive('focus', {
   inserted: (el) => {

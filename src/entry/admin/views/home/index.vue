@@ -1,20 +1,24 @@
 <template>
-  <div>
-    <el-button @click="login">测222试</el-button>
-  </div>
+    <div>
+      home
+    </div>
 </template>
 
 <script>
-// import loginApi from '@/api/login'
 export default {
+  components: {
+
+  },
+  props: {
+
+  },
   data () {
     return {
 
     }
   },
   methods: {
-    login () {
-    }
+
   },
   created () {
 
@@ -22,5 +26,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+
 </style>
